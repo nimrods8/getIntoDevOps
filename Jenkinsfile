@@ -8,7 +8,7 @@ node('ubuntu') {
     stage('Clone repository') {
         /* Let's make sure we have the repository cloned to our workspace */
         checkout scm
-        def pipeline = load "/var/lib/jenkins/secrets/initialAdminPassword"
+        def pipeline = load "/home/ubuntu/workspace/pipe-docker-hello/Jenkinsfile"
     }
 
     stage('Build Docker image') {
