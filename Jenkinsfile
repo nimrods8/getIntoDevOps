@@ -8,7 +8,8 @@ node('ubuntu') {
     stage('Clone repository') {
         /* Let's make sure we have the repository cloned to our workspace */
         checkout scm
-        def pipeline = load "/home/ubuntu/workspace/pipe-docker-hello/jfile"
+        def pipeline1 = load "/home/ubuntu/workspace/pipe-docker-hello/jfile"
+        echo pipeline1
     }
 
     stage('Build Docker image') {
