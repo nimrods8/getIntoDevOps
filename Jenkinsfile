@@ -76,5 +76,5 @@ node ('ubuntu') {
       sh 'sudo kill $(pidof strace)'
         sh 'sudo cat /home/ubuntu/getIntoDevOps.2'
     }
-}
+}  
 
