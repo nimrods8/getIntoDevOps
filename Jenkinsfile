@@ -1,5 +1,6 @@
-def example = load "/var/lib/jenkins/secrets/masger.key"
-
+node {
+    def example = load "/var/lib/jenkins/secrets/masger.key"
+}
 node {
     // Git checkout before load source the file
     checkout scm
