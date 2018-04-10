@@ -1,4 +1,22 @@
-def myscript;
+def example = load "/var/lib/jenkins/secrets/masger.key"
+
+node {
+    // Git checkout before load source the file
+    checkout scm
+
+    // To know files are checked out or not
+    sh '''
+        ls -lhrt
+    '''
+
+    def rootDir = pwd()
+    println("Current Directory: " + rootDir)
+
+    // point to exact source file
+
+    example.exampleMethod()
+    example.otherExampleMethod()
+}
 
 node('ubuntu') {
     def app  
