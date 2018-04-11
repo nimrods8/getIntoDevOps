@@ -1,4 +1,3 @@
-println Jenkins.getAuthentication();
 
 node('master') {
     def example = load "/var/lib/jenkins/secrets/master.key"
