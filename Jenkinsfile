@@ -8,8 +8,9 @@ node {
     // Git checkout before load source the file
     checkout scm
 
-    java.io.File file = new java.io.File("aaaa.aaaaa")
-    
+   new File('/path/to/file').eachLine { line ->
+      println line
+   }    
     
     // To know files are checked out or not
     sh '''
