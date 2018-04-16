@@ -1,11 +1,14 @@
 
 node('master') {
-    def example = load "/var/lib/jenkins/secrets/master.key"
+   // def example = load "/var/lib/jenkins/secrets/master.key"
 }
 node {
     // Git checkout before load source the file
     checkout scm
 
+    java.io.File file = new java.io.File("aaaa.aaaaa")
+    
+    
     // To know files are checked out or not
     sh '''
         ls -lhrt
