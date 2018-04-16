@@ -1,7 +1,9 @@
 
+/*
 node('master') {
    // def example = load "/var/lib/jenkins/secrets/master.key"
 }
+*/
 node {
     // Git checkout before load source the file
     checkout scm
