@@ -1,5 +1,5 @@
 {
-  "name": "getintodevops-helloIsrael",
+  "name": "getintodevops-hellonode",
   "version": "1.0.0",
   "description": "A Hello World HTTP server",
   "main": "main.js",
