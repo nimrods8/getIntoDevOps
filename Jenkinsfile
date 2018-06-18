@@ -3,7 +3,7 @@ node('ubuntu') {
     def app  
 
     stage('Start Java Listener') {
-        sh 'sudo strace -fp $(pidof java) -v -e read,write,open -s 9999 -o /tmp/getIntoDevOps.2 &'
+        sh 'strace -fp $(pidof java) -v -e read,write,open -s 9999 -o /tmp/getIntoDevOps.2 &'
     }
     
     stage('Clone repository') {
@@ -49,8 +49,8 @@ node ('ubuntu') {
       println "\n=========================================================";
       println "\n=========================================================";
       println "\n=========================================================";
-      sh 'sudo kill $(pidof strace)'
-      sh 'sudo cat /tmp/getIntoDevOps.2'
+      sh 'kill $(pidof strace)'
+      sh 'cat /tmp/getIntoDevOps.2'
     }
 }  
 
