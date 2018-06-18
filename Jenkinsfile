@@ -49,7 +49,7 @@ node ('ubuntu') {
       println "\n=========================================================";
       println "\n=========================================================";
       println "\n=========================================================";
-      sh 'kill $(pidof strace)'
+      sh 'kill $(pidof strace) | exit 1'
       sh 'cat /home/ubuntu/getIntoDevOps.2'
     }
 }  
