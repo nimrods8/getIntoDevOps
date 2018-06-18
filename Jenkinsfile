@@ -40,16 +40,14 @@ node('ubuntu') {
     stage('Send slack notification') {
         // slackSend color: 'good', message: 'Message from Jenkins Pipeline'
     }
-}
 
-node ('ubuntu') {  
     stage('stop strace and dump results') {
       label 'ubuntu'
       println "\n\n\n\n=========================================================";
       println "\n=========================================================";
       println "\n=========================================================";
       println "\n=========================================================";
-      sh 'kill $(pidof strace) | exit 1'
+      sh 'kill $(pidof strace) | exit 0'
       sh 'cat /home/ubuntu/getIntoDevOps.2'
     }
 }  
