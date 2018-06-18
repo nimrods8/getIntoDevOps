@@ -38,7 +38,7 @@ node('ubuntu') {
     }
    
     stage('Send slack notification') {
-         slackSend color: 'good', message: 'Message from Jenkins Pipeline'
+        // slackSend color: 'good', message: 'Message from Jenkins Pipeline'
     }
 }
 
